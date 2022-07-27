@@ -30,20 +30,9 @@ $ git config --global user.email "vlad@tran.sylvan.ia"
 {: .language-bash}
 
 Please use your own name and email address instead of Dracula's. This user name and email will be associated with your subsequent Git activity,
-which means that any changes pushed to
-[GitHub](https://github.com/),
-[BitBucket](https://bitbucket.org/),
-[GitLab](https://gitlab.com/) or
-another Git host server
-after this lesson will include this information.
+which means that any changes pushed to the DSH's [GitLab](https://gitlab.com/) instance will include this information.
 
-For this lesson, we will be interacting with [GitHub](https://github.com/) and so the email address used should be the same as the one used when setting up your GitHub account. If you are concerned about privacy, please review [GitHub's instructions for keeping your email address private][git-privacy]. 
-
->## Keeping your email private
->
->If you elect to use a private email address with GitHub, then use that same email address for the `user.email` value, e.g. `username@users.noreply.github.com` replacing `username` with your GitHub one.
-{: .callout}
-
+For this lesson, we will be interacting with [GitLab](https://gitlab.com/) in the DSH and so the email address used should be the same as the one used when setting up your DSH account. 
 
 > ## Line Endings
 >
@@ -58,52 +47,33 @@ For this lesson, we will be interacting with [GitHub](https://github.com/) and s
 >
 > You can change the way Git recognizes and encodes line endings
 > using the `core.autocrlf` command to `git config`.
-> The following settings are recommended:
+> The following setting is recommended:
 >
-> On macOS and Linux:
->
-> ~~~
-> $ git config --global core.autocrlf input
-> ~~~
-> {: .language-bash}
->
-> And on Windows:
+> On the DSH Windows desktop:
 >
 > ~~~
 > $ git config --global core.autocrlf true
 > ~~~
 > {: .language-bash}
 > 
+> And on Linux (e.g. if you are configuring Git for use on the DSH HPC cluster):
+>
+> ~~~
+> $ git config --global core.autocrlf input
+> ~~~
+> {: .language-bash}
+> 
 {: .callout}
 
-Dracula also has to set his favorite text editor, following this table:
+Dracula may also want to set his favorite text editor, using one of the commands on this table (nano is the default):
 
 | Editor             | Configuration command                            |
 |:-------------------|:-------------------------------------------------|
-| Atom | `$ git config --global core.editor "atom --wait"`|
 | nano               | `$ git config --global core.editor "nano -w"`    |
-| BBEdit (Mac, with command line tools) | `$ git config --global core.editor "bbedit -w"`    |
-| Sublime Text (Mac) | `$ git config --global core.editor "/Applications/Sublime\ Text.app/Contents/SharedSupport/bin/subl -n -w"` |
-| Sublime Text (Win, 32-bit install) | `$ git config --global core.editor "'c:/program files (x86)/sublime text 3/sublime_text.exe' -w"` |
-| Sublime Text (Win, 64-bit install) | `$ git config --global core.editor "'c:/program files/sublime text 3/sublime_text.exe' -w"` |
-| Notepad (Win)    | `$ git config --global core.editor "c:/Windows/System32/notepad.exe"`|
-| Notepad++ (Win, 32-bit install)    | `$ git config --global core.editor "'c:/program files (x86)/Notepad++/notepad++.exe' -multiInst -notabbar -nosession -noPlugin"`|
-| Notepad++ (Win, 64-bit install)    | `$ git config --global core.editor "'c:/program files/Notepad++/notepad++.exe' -multiInst -notabbar -nosession -noPlugin"`|
-| Kate (Linux)       | `$ git config --global core.editor "kate"`       |
-| Gedit (Linux)      | `$ git config --global core.editor "gedit --wait --new-window"`   |
-| Scratch (Linux)       | `$ git config --global core.editor "scratch-text-editor"`  |
-| Emacs              | `$ git config --global core.editor "emacs"`   |
 | Vim                | `$ git config --global core.editor "vim"`   |
 | VS Code                | `$ git config --global core.editor "code --wait"`   |
 
 It is possible to reconfigure the text editor for Git whenever you want to change it.
-
-> ## Exiting Vim
->
-> Note that Vim is the default editor for many programs. If you haven't used Vim before and wish to exit a session without saving
-your changes, press <kbd>Esc</kbd> then type `:q!` and hit <kbd>Enter</kbd> or <kbd>↵</kbd> or on Macs, <kbd>Return</kbd>.
-> If you want to save your changes and quit, press <kbd>Esc</kbd> then type `:wq` and hit <kbd>Enter</kbd> or <kbd>↵</kbd> or on Macs, <kbd>Return</kbd>.
-{: .callout}
 
 Git (2.28+) allows configuration of the name of the branch created when you
 initialize any new repository.  Dracula decides to use that feature to set it to `main` so 
@@ -148,23 +118,15 @@ $ git config --list
 You can change your configuration as many times as you want: use the
 same commands to choose another editor or update your email address.
 
-> ## Proxy
+> ## Enabling Secure Channel 
 >
-> In some networks you need to use a
-> [proxy](https://en.wikipedia.org/wiki/Proxy_server). If this is the case, you
-> may also need to tell Git about the proxy:
->
-> ~~~
-> $ git config --global http.proxy proxy-url
-> $ git config --global https.proxy proxy-url
-> ~~~
-> {: .language-bash}
->
-> To disable the proxy, use
+> Finally, you need to tell Git that the DSH uses Secure Channel rather than OpenSSL
+> for its HTTPS certificates. If you're not sure what this means, don't worry - but if you 
+> see an `Unable to get local issuer certificate` error message as you work your way through
+> this course it may be that you missed this step!
 >
 > ~~~
-> $ git config --global --unset http.proxy
-> $ git config --global --unset https.proxy
+> $ git config --global http.sslBackend schannel
 > ~~~
 > {: .language-bash}
 {: .callout}
