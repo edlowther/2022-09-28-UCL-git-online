@@ -33,34 +33,20 @@ Courtesy NASA/JPL-Caltech.
 [CC BY-SA 3.0](https://creativecommons.org/licenses/by-sa/3.0/deed.en).
 
 
-
-First, let's create a directory in `Desktop` folder for our work and then move into that directory:
+First, let's make sure we are still in our `planets` folder:
 
 ~~~
-$ cd ~/Desktop
-$ mkdir planets
-$ cd planets
+$ pwd
 ~~~
 {: .language-bash}
 
-Then we tell Git to make `planets` a [repository]({{ page.root }}{% link reference.md %}#repository)
--- a place where Git can store versions of our files:
-
-
 ~~~
-$ git init
+/n/Desktop/planets
 ~~~
-{: .language-bash}
-
-It is important to note that `git init` will create a repository that
-includes subdirectories and their files---there is no need to create
-separate repositories nested within the `planets` repository, whether
-subdirectories are present from the beginning or added later. Also, note
-that the creation of the `planets` directory and its initialization as a
-repository are completely separate processes.
+{: .output}
 
 If we use `ls` to show the directory's contents,
-it appears that nothing has changed:
+it appears that it is empty:
 
 ~~~
 $ ls
@@ -68,7 +54,8 @@ $ ls
 {: .language-bash}
 
 But if we add the `-a` flag to show everything,
-we can see that Git has created a hidden directory within `planets` called `.git`:
+we can see that Git created a hidden directory within `planets` called `.git`. This 
+happened when we entered the `git init` command a little earlier:
 
 ~~~
 $ ls -a
