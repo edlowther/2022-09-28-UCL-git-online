@@ -18,19 +18,12 @@ keypoints:
 - "Write a commit message that accurately describes your changes."
 ---
 
-First let's make sure we're still in the right directory.
-You should be in the `planets` directory.
-
-~~~
-$ cd ~/Desktop/planets
-~~~
-{: .language-bash}
-
-Let's create a file called `mars.txt` that contains some notes
+In the `planets` directory, let's create a file called `mars.txt` that contains some notes
 about the Red Planet's suitability as a base.
 We'll use `nano` to edit the file;
 you can use whatever editor you like.
 In particular, this does not have to be the `core.editor` you set globally earlier. But remember, the bash command to create or edit a new file will depend on the editor you choose (it might not be `nano`). For a refresher on text editors, check out ["Which Editor?"](https://swcarpentry.github.io/shell-novice/03-create/) in [The Unix Shell](https://swcarpentry.github.io/shell-novice/) lesson.
+If you're not confident with command-line text editors like nano, VS Code - which you can find in the Start menu of the DSH Windows Desktop - is a great option.
 
 ~~~
 $ nano mars.txt
