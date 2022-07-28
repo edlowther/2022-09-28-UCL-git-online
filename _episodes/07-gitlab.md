@@ -202,11 +202,9 @@ Enter passphrase (empty for no passphrase):
 ~~~
 {: .output}
 
-Now, it is prompting Dracula for a passphrase.  Since he is using a secure connection 
-to an ISO27001-certified system and plans to ensure that sensitive data is never 
-committed to his Git history, he may regard this as overkill. If you do decide 
-to set a passphrase, be sure to use something memorable or save your passphrase somewhere, 
-as there is no "reset my password" option. 
+Now, it is prompting Dracula for a passphrase. It is generally considered best practice 
+to set a passphrase for any SSH key, so we'll go ahead and do that. Be sure to use something 
+memorable or save your passphrase somewhere, as there is no "reset my password" option. 
 
 After the passphrase step, we receive the confirmation
 
