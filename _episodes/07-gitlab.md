@@ -147,10 +147,6 @@ You can think of the public key as a padlock, and only you have the key (the pri
 
 What we will do now is the minimum required to set up the SSH keys and add the public key to a GitLab account.
 
-> ## Advanced SSH
-> A supplemental episode in this lesson discusses SSH and key pairs in more depth and detail. 
-{: .callout}
-
 The first thing we are going to do is check if this has already been done on the computer you’re on.  Because generally speaking, this setup only needs to happen once and then you can forget about it. 
 
 > ## Keeping your keys secure
@@ -245,6 +241,85 @@ drwxr-xr-x 1 Vlad Dracula 197121   0 Jul 28 14:48 ../
 -rw-r--r-- 1 Vlad Dracula 197121 106 Jul 28 14:48 id_ed25519.pub
 ~~~
 {: .output}
+
+#### Optional: SSH Agent for easier key handling
+
+An SSH key is only as strong as the password used to unlock it, but on the
+other hand, typing out a complex password every time you connect to a machine
+is tedious and gets old very fast. This is where the [SSH Agent](https://www.ssh.com/academy/ssh/agent)
+comes in.
+
+Using an SSH Agent, you can type your password for the private key once, then
+have the Agent remember it for some number of hours or until you log off.
+Unless some nefarious actor has physical access to your virtual machine in the DSH, this keeps the
+password safe, and removes the tedium of entering the password multiple times.
+
+Once your password expires in the Agent, you have to type it in again.
+
+Let's go back to Git Bash and check if an agent is running:
+
+```
+{{ site.local.prompt }} ssh-add -l
+```
+{: .language-bash}
+
+If you get an error like this one,
+
+```
+Error connecting to agent: No such file or directory
+```
+{: .error}
+
+... then you need to launch the agent as follows:
+
+```
+{{ site.local.prompt }} eval $(ssh-agent)
+```
+{: .language-bash}
+
+> ## What's in a `$(...)`?
+>
+> The syntax of this SSH Agent command is unusual. This is because the `ssh-agent` command creates
+> opens a connection that only you have access to, and prints a series of
+> shell commands that can be used to reach it -- but _does not execute them!_
+>
+> ```
+> {{ site.local.prompt }} ssh-agent
+> ```
+> {: .language-bash}
+> ```
+> SSH_AUTH_SOCK=/tmp/ssh-Zvvga2Y8kQZN/agent.131521;
+> export SSH_AUTH_SOCK;
+> SSH_AGENT_PID=131522;
+> export SSH_AGENT_PID;
+> echo Agent pid 131522;
+> ```
+> {: .output}
+>
+> The `eval` command interprets this text output as commands and allows you
+> to access the SSH Agent connection you just created.
+>
+> You could run each line of the `ssh-agent` output yourself, and
+> achieve the same result. Using `eval` just makes this easier.
+{: .callout}
+
+Otherwise, your agent is already running: don't mess with it.
+
+Add your key to the agent, with session expiration after 8 hours:
+
+```
+{{ site.local.prompt }} ssh-add -t 8h ~/.ssh/id_ed25519
+```
+{: .language-bash}
+```
+Enter passphrase for .ssh/id_ed25519: 
+Identity added: .ssh/id_ed25519
+Lifetime set to 86400 seconds
+```
+{: .output}
+
+For the duration (8 hours), whenever you use that key, the SSH Agent will
+provide the key on your behalf without you having to type a single keystroke.
 
 ### 3.2 Copy the public key to GitLab
 Now we have a SSH key pair but before we can use it, we need to tell GitLab that it exists. 
