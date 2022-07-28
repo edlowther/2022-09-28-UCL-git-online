@@ -165,7 +165,7 @@ working in teams or not, because it is
 Just remember that you can use wildcards and regular expressions to ignore a
 particular set of files in `.gitignore`.
 
-## [Remotes in GitHub]({{ page.root }}{% link _episodes/07-github.md %})
+## [Remotes in GitLab]({{ page.root }}{% link _episodes/07-gitlab.md %})
 
 *   Make it clear that Git and GitHub are not the same thing: Git is an open
     source version control tool, GitHub is a company that hosts Git
