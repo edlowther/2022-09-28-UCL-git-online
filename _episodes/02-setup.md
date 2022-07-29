@@ -65,7 +65,8 @@ For this lesson, we will be interacting with [GitLab](https://gitlab.com/) in th
 > 
 {: .callout}
 
-Dracula may also want to set his favorite text editor, using one of the commands on this table (nano is the default):
+Dracula may also want to set his favorite text editor, using one of the commands on this table 
+(otherwise Git Bash will use Notepad++, the default):
 
 | Editor             | Configuration command                            |
 |:-------------------|:-------------------------------------------------|
