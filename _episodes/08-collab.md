@@ -213,7 +213,7 @@ GitHub) are back in sync.
 > The Maintainer has some questions about one line change made by the Owner and
 > has some suggestions to propose.
 >
-> With GitLab, it is possible to comment the diff of a commit. Over the line of
+> With GitLab, it is possible to comment on the diff of a commit. Over the line of
 > code to comment, a blue comment icon appears to open a comment window.
 >
 > The Maintainer posts her comments and suggestions using the GitLab interface.
