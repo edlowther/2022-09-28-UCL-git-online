@@ -344,7 +344,7 @@ settings page, click "SSH keys," on the left side "User settings" menu. Under "A
 
 Now that this is done, we can run this command to check our authentication from Git Bash. 
 ~~~
-$ ssh -T git@github.com
+$ ssh -T git@gitlab.idhs.ucl.ac.uk
 ~~~
 {: .language-bash}
 
